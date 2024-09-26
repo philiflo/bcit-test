@@ -9,7 +9,9 @@ steps to write
     - add a public ssh key to the authorized_keys file in your new users home directory
     - disable root access via ssh
 
-# Preface
+# Creating a remote server with DigitalOcean
+
+## Preface
 This guide will provide you with the steps needed to start up and run a remote server that is backed with a cloud service provider. For this scenario, we will be using DigitalOcean, which is a modular and extensive cloud service provider that is used by various businesses for their website usage.
 
 ## Step 1 - Downloading and Uploading the DigitalOcean Image
