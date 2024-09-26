@@ -66,6 +66,29 @@ It is important to distinguish this public key name from the other ones that may
 ## Step 3: Create a new Arch Linux droplet
 *preface here*
 
+### Make a new Arch Linux droplet
+- In the DigitalOcean homepage, navigate to the 'Create' button at the top of your screen. From there, select the 'Droplet' option. 
+
+- Once here, you will be prompted for various settings:
+Choose Region - San Francisco
+Datacenter - SF03
+Choose an Image - Locate your downloaded Arch Linux image you downloaded from earlier, it will be under the 'Custom Image' tab
+Choose Size - From here you can choose a droplet type for prefered optimization. If you are looking to save money with this droplet, you can select the 'basic' option. From there, select your prefered CPU option, the cheapest option under 'Regular Intel' should be adequate for regular use. 
+Backups - Enable backups for more fault security
+Choose Authentication Method - SSH Key, select the key pair you made from earlier
+Finalize Details - From here, enter your prefered hostname. Under projects, select the project you wish to connect this droplet to.
+
+### Connect to your Arch Linux droplet
+- In the DigitalOcean homepage, navigated to the project you connected your droplet to. In the main line you will find a set of numbers resembling an IP address, copy this.
+
+- Once copied, navigate back to the terminal and enter the following command:
+ssh -i .ssh/do-key arch@your-droplets-ip-address
+
+For this command, replace 'do-key' with the name of your key and replace 'your-droplets-ip-address' with the ip address you just copied. 
+
+Once here, you have successfully created an SSH key pair and connected it to a droplet. 
+
+
 
 
 
