@@ -75,7 +75,7 @@ After you've entered all these details, click Create Droplet.
 - In the DigitalOcean homepage, navigated to the project you connected your droplet to. In the main line you will find a set of numbers resembling an IP address, copy this.
 
 - Once copied, navigate back to the terminal and enter the following command:
-***'ssh -i .ssh/do-key arch@your-droplets-ip-address'***
+```ssh -i .ssh/do-key arch@your-droplets-ip-address```
 
 For this command, replace 'do-key' with the name of your key and replace 'your-droplets-ip-address' with the ip address you just copied. 
 
