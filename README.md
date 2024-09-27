@@ -29,10 +29,10 @@ This system is much more secure than the usual password system as key pairs cont
 ### Create your SSH Key Pair
 - Open your Terminal and enter one of the following commands:
 If you are using the powershell -
-***'ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"'***
+```ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"```
 
 If you are using a MacOS shell -
-***'ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"'***
+```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"```
 
 For both scenarios, replace 'your email' with the email you used to make your DigitalOcean account, and 'your-user-name' with your DigitalOcean username. If you would like to change the name of your droplet, you can change 'do-key' to your desired name. 
 
@@ -41,10 +41,10 @@ For both scenarios, replace 'your email' with the email you used to make your Di
 ### Access your public key
 - In the terminal, enter one of the following commands:
 For Powershell users -
-***'Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard'***
+```Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard```
 
 For MacOS users -
-***'pbcopy < ~/.ssh/do-key.pub'***
+```pbcopy < ~/.ssh/do-key.pub```
 
 Once entered, copy the text that is returned.
 
@@ -87,26 +87,26 @@ We will setup a cloud-init configuration file to automate the prior steps for ea
 
 ### Confirm that cloud-init is running on your server
 - First, access your arch linux server with the following command in your terminal: 
-***'ssh arch'***
+```ssh arch```
 
 - Once here, execute the following code to confirm that cloud-init is running on your server:
-***'systemctl status cloud-init'***
+```systemctl status cloud-init```
 From here you will see a large return, next to Active: your status should show as Active.
 
 ### Install Neovim onto your server
 To execute this cloud-init file, we will need to install neovim onto our server to store the file that contains our commands to initialize.
 
 - Initialize a package manager. For arch linux, we will be using pac man with sudo privileges to execute this. We will execute this with the following command:
-***'sudo pacman -Syu'***
+```sudo pacman -Syu```
 You will be prompted for a yes/no option (Y/n) to confirm the installation, type Y.
  
 - Now, execute the following command to install neovim:
-***'sudo pacman -S neovim'***
+```sudo pacman -S neovim```
 You will be prompted for a yes/no option (Y/n) to confirm the installation, type Y.
 
 ### Creating a yaml file for the initialization
 - Once you have neovim installed onto your server, execute the following command to create a new yaml file:
-***'nvim cloud-init-config.yaml'***
+```nvim cloud-init-config.yaml```
 
 - In the yaml file we want to input syntax that other users can execute to configure their accounts. You can use this example syntax for your users to fill out:
 
@@ -134,12 +134,12 @@ For this example replace the following:
     - ssh-authorized-keys: after ssh-ed25519, paste the public key you copied from the terminal
     - packages: enter desired packages here 
 
-- Once here, press ESC, then type ***':wq'*** and press enter/return to save the contents. 
+- Once here, press ESC, then type ```:wq``` and press enter/return to save the contents. 
 
 - Once done, execute the following commands to apply the cloud-init configuration:
-***'sudo cloud-init init --local'***
-***'sudo cloud-init modules --mode=config'***
-***'sudo cloud-init modules --mode=final'***
+```sudo cloud-init init --local```
+```sudo cloud-init modules --mode=config```
+```sudo cloud-init modules --mode=final```
 
 
 
