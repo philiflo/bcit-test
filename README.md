@@ -13,15 +13,15 @@ The first step is to download arch linux onto DigitalOcean. We will do this by d
 
 This will lead you to a gitlab page that contains the Arch Linux image you'll need to download
 
-- From here, navigate to the most recent 'images' folder. You'll see a long list of Arch Linux images, for this tutorial we want to download the image that ends with the **.qcow2** extension (it will be approximately 496mb)
+- From here, navigate to the most recent **images** folder. You'll see a long list of Arch Linux images, for this tutorial we want to download the image that ends with the **.qcow2** extension (it will be approximately 496mb)
 
 ### Uploading the image
 
-- Once you have your image downloaded, go back to your DigitalOcean homepage. Navigate to the 'Backups & Screenshots' option located on the sidebar. From here, navigate to the Custom Images tab.
+- Once you have your image downloaded, go back to your DigitalOcean homepage. Navigate to the **Backups & Screenshots** option located on the sidebar. From here, navigate to the Custom Images tab.
 
-- In the main module, click the Upload Image option and upload the Arch Linux image you've downloaded.
+- In the main module, click the **Upload Image** option and upload the Arch Linux image you've downloaded.
 
-- Once here you will be given choices of different regions and a distributor to select. From here (assuming you are on the West Coast), select Arch Linux and select San Francisco.
+- Once here you will be given choices of different regions and a distributor to select. From here (assuming you are on the West Coast), select **Arch Linux** and select **San Francisco.**
 
 ## Step 2: Create the SSH Key Pair and Authenticate it
 DigitalOcean utilizes a key pair system to authenticate users and connect clients and a remote machine (for this situation, a cloud service). 
@@ -31,15 +31,15 @@ This system is much more secure than the usual password system as key pairs cont
 ### Create your SSH Key Pair
 - Open your Terminal and enter one of the following commands:
 
-If you are using the powershell -
+If you are using the Powershell -
 
 ```ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"```
 
 If you are using a MacOS shell -
 
-```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"```
+```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your-email-address"```
 
-For both scenarios, replace 'your email' with the email you used to make your DigitalOcean account, and 'your-user-name' with your DigitalOcean username. If you would like to change the name of your droplet, you can change 'do-key' to your desired name. 
+For both scenarios, replace "your-email" with the email you used to make your DigitalOcean account, and "your-username" with your DigitalOcean username. If you would like to change the name of your droplet, you can change 'do-key' to your desired name. 
 
 - From here, you will be prompted for a passphrase for security. Remember this passphrase as you will need it to access your key.
 
@@ -56,17 +56,17 @@ For MacOS users -
 
 Once entered, copy the text that is returned.
 
-- Once here, go back to the DigitalOcean console and navigate to the 'Security' tab, it is located in the main module in the 'Settings' option located on the sidebar. From here, click the 'Add SSH Key' option.
+- Once here, go back to the DigitalOcean console and navigate to the **Security** tab, it is located in the main module in the **Settings** option located on the sidebar. From here, click the 'Add SSH Key' option.
 
-- In the 'Public Key' textbox, enter the text you copied from the terminal. You are also prompted for a key name, enter a name that is appropriate for the servers use. 
+- In the **Public Key** textbox, enter the text you copied from the terminal. You are also prompted for a key name, enter a name that is appropriate for the servers use. 
 
 It is important to distinguish this public key name from the other ones that may be connecting to this server. Make sure your name is unique to your use. 
 
 ## Step 3: Create a new Arch Linux droplet
-*preface here*
+An Arch Linux droplet in DigitalOcean is the server that we will be connecting to. It requires connecting the SSH key pair that we made earlier for authentication.
 
 ### Make a new Arch Linux droplet
-- In the DigitalOcean homepage, navigate to the 'Create' button at the top of your screen. From there, select the 'Droplet' option. 
+- In the DigitalOcean homepage, navigate to the **Create** button at the top of your screen. From there, select the **Droplet** option. 
 
 - Once here, you will be prompted for various settings:
 
@@ -84,7 +84,7 @@ It is important to distinguish this public key name from the other ones that may
 
 **Finalize Details** - From here, enter your prefered hostname. Under projects, select the project you wish to connect this droplet to.
 
-After you've entered all these details, click Create Droplet.
+After you've entered all these details, click **Create Droplet**.
 
 ### Connect to your Arch Linux droplet
 
@@ -94,7 +94,7 @@ After you've entered all these details, click Create Droplet.
 
 ```ssh -i .ssh/do-key arch@your-droplets-ip-address```
 
-For this command, replace 'do-key' with the name of your key and replace 'your-droplets-ip-address' with the ip address you just copied. 
+For this command, replace "do-key" with the name of your key and replace "your-droplets-ip-address" with the ip address you just copied. 
 
 Once here, you have successfully created an SSH key pair and connected it to a droplet. 
 
@@ -117,17 +117,17 @@ From here you will see a large return, next to Active: your status should show a
 ### Install Neovim onto your server
 To execute this cloud-init file, we will need to install neovim onto our server to store the file that contains our commands to initialize.
 
-- Initialize a package manager. For arch linux, we will be using pac man with sudo privileges to execute this. We will execute this with the following command:
+- Initialize a package manager. For arch linux, we will be using pacman with sudo privileges to execute this. We will execute this with the following command:
 
 ```sudo pacman -Syu```
 
-You will be prompted for a yes/no option (Y/n) to confirm the installation, type Y.
+You will be prompted for a yes/no option (Y/n) to confirm the installation, type **Y**.
  
 - Now, execute the following command to install neovim:
 
 ```sudo pacman -S neovim```
 
-You will be prompted for a yes/no option (Y/n) to confirm the installation, type Y.
+You will be prompted for a yes/no option (Y/n) to confirm the installation, type **Y**.
 
 ### Creating a yaml file for the initialization
 - Once you have neovim installed onto your server, execute the following command to create a new yaml file:
@@ -175,8 +175,5 @@ For this example replace the following:
 
 ```sudo cloud-init modules --mode=final```
 
-
-
-
-
+Once you have completed these steps, you will now have a running Arch Linux server with a cloud-init file to automate the configuration of new users.
 
