@@ -102,7 +102,53 @@ We will setup a cloud-init configuration file to automate the prior steps for ea
 ***'systemctl status cloud-init'***
 From here you will see a large return, next to Active: your status should show as Active.
 
-### 
+### Install Neovim onto your server
+To execute this cloud-init file, we will need to install neovim onto our server to store the file that contains our commands to initialize.
+
+- Initialize a package manager. For arch linux, we will be using pac man with sudo privileges to execute this. We will execute this with the following command:
+***'sudo pacman -Syu'***
+You will be prompted for a yes/no option (Y/n) to confirm the installation, type Y.
+ 
+- Now, execute the following command to install neovim:
+***'sudo pacman -S neovim'***
+You will be prompted for a yes/no option (Y/n) to confirm the installation, type Y.
+
+### Creating a yaml file for the initialization
+- Once you have neovim installed onto your server, execute the following command to create a new yaml file:
+***'nvim cloud-init-config.yaml'***
+
+- In the yaml file we want to input syntax that other users can execute to configure their accounts. You can use this example syntax for your users to fill out:
+
+```yaml
+users:
+  - default
+  - name: new_user 
+    primary_group: users
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB... 
+
+packages:
+  - neovim
+  - git 
+
+disable_root: true
+```
+For this example replace the following:
+    - name: change this to the desired username
+    - primary_group: change this to the name of the desired group
+    - groups: for admin privileges, use wheel, for user, use users
+    - ssh-authorized-keys: after ssh-ed25519, paste the public key you copied from the terminal
+    - packages: enter desired packages here 
+
+- Once here, press ESC, then type ***':wq'*** and press enter/return to save the contents. 
+
+- Once done, execute the following commands to apply the cloud-init configuration:
+***'sudo cloud-init init --local'***
+***'sudo cloud-init modules --mode=config'***
+***'sudo cloud-init modules --mode=final'***
 
 
 
