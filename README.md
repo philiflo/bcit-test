@@ -84,14 +84,25 @@ Finalize Details - From here, enter your prefered hostname. Under projects, sele
 - In the DigitalOcean homepage, navigated to the project you connected your droplet to. In the main line you will find a set of numbers resembling an IP address, copy this.
 
 - Once copied, navigate back to the terminal and enter the following command:
-ssh -i .ssh/do-key arch@your-droplets-ip-address
+***'ssh -i .ssh/do-key arch@your-droplets-ip-address'***
 
 For this command, replace 'do-key' with the name of your key and replace 'your-droplets-ip-address' with the ip address you just copied. 
 
 Once here, you have successfully created an SSH key pair and connected it to a droplet. 
 
+## Step 4: Using Cloud-init Configuration
+A cloud-init configuration file is a way for us to automate the previous steps so that users can set up their ssh keys to their droplet in an automated fashion.
+We will setup a cloud-init configuration file to automate the prior steps for easy future setups.
 
+### Confirm that cloud-init is running on your server
+- First, access your arch linux server with the following command in your terminal: 
+***'ssh arch'***
 
+- Once here, execute the following code to confirm that cloud-init is running on your server:
+***'systemctl status cloud-init'***
+From here you will see a large return, next to Active: your status should show as Active.
+
+### 
 
 
 
