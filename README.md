@@ -1,14 +1,3 @@
-steps to write
-- uploading digital ocean image
-- create the ssh key pair and authenticate it in digital ocean
-- add public key to digital ocean 
-- create a droplet running arch linux using the DigitalOcean web console
-- use a cloud init config file to:
-    - create a new regular user
-    - install some initial packages
-    - add a public ssh key to the authorized_keys file in your new users home directory
-    - disable root access via ssh
-
 # Creating a remote server with DigitalOcean
 
 ## Preface
@@ -40,10 +29,10 @@ This system is much more secure than the usual password system as key pairs cont
 ### Create your SSH Key Pair
 - Open your Terminal and enter one of the following commands:
 If you are using the powershell -
-ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"
+***'ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"'***
 
 If you are using a MacOS shell -
-ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"
+***'ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"'***
 
 For both scenarios, replace 'your email' with the email you used to make your DigitalOcean account, and 'your-user-name' with your DigitalOcean username. If you would like to change the name of your droplet, you can change 'do-key' to your desired name. 
 
@@ -52,10 +41,10 @@ For both scenarios, replace 'your email' with the email you used to make your Di
 ### Access your public key
 - In the terminal, enter one of the following commands:
 For Powershell users -
-Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard
+***'Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard'***
 
 For MacOS users -
-pbcopy < ~/.ssh/do-key.pub
+***'pbcopy < ~/.ssh/do-key.pub'***
 
 Once entered, copy the text that is returned.
 
@@ -79,6 +68,8 @@ Choose Size - From here you can choose a droplet type for prefered optimization.
 Backups - Enable backups for more fault security
 Choose Authentication Method - SSH Key, select the key pair you made from earlier
 Finalize Details - From here, enter your prefered hostname. Under projects, select the project you wish to connect this droplet to.
+
+After you've entered all these details, click Create Droplet.
 
 ### Connect to your Arch Linux droplet
 - In the DigitalOcean homepage, navigated to the project you connected your droplet to. In the main line you will find a set of numbers resembling an IP address, copy this.
@@ -149,6 +140,8 @@ For this example replace the following:
 ***'sudo cloud-init init --local'***
 ***'sudo cloud-init modules --mode=config'***
 ***'sudo cloud-init modules --mode=final'***
+
+
 
 
 
