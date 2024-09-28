@@ -180,7 +180,11 @@ Once you have completed these steps, you will now have a running Arch Linux serv
 ## References
 
 How to Automate Droplet Setup with cloud-init. DigitalOcean Documentation. (2022, August 14). https://docs.digitalocean.com/products/droplets/how-to/automate-setup-with-cloud-init/ 
+
 McNinch, N. (2024a, September 10). 2420-notes/week-one.md. GitLab. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-one.md 
-McNinch, N. (2024b, September 16). 2420-notes/week-two.md · main · cit_2420 / 2420-notes-F24 · GITLAB. GitLab. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-two.md 
+
+McNinch, N. (2024b, September 16). 2420-notes/week-two.md · main · cit_2420 / 2420-notes-F24 · GITLAB. GitLab. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-two.md
+
 McNinch, N. (2024c, September 24). 2420-notes/week-three.md. GitLab. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-three.md 
+
 SSH Academy. (2023, February 9). What is SSH public key authentication?. PAM solutions, Key Management Systems, Secure File Transfers. https://www.ssh.com/academy/ssh/public-key-authentication#:~:text=The%20motivation%20for%20using%20public,long%20passwords%20can%20not%20offer. 
